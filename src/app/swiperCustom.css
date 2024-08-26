@@ -1,0 +1,23 @@
+/* swiper-custom.css */
+.swiper-pagination-bullet {
+    background-color: #E1F277; /* cor das bolinhas de paginação (azul Tailwind) */
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #E1F277;
+   
+    width: 20px; /* largura das setas */
+  height: 20px; /* altura das setas */
+  font-size: 20px; /* tamanho da fonte das setas */
+   
+  }
+  
+  .swiper-scrollbar-drag {
+    background-color: #E1F277; /* cor da barra de rolagem (azul Tailwind) */
+  }
+  
+  .swiper-container {
+    --swiper-theme-color: #E1F277; /* cor padrão do tema Swiper (azul Tailwind) */
+  }
+  
