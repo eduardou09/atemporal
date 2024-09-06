@@ -18,7 +18,7 @@ const Header = ({ handleClick, isHeader, onClickFirst, onClickSecond, second, fi
                 <div>
                     <div className="flex justify-between items-center text-xl pt-4 border-b border-gray-900 px-10 w-full bg-black z-50 top-0 right-0 ">
                         <Link href={'/home'}>
-                            <h1 className="text-white font-bold font-league-spartan py-3 cursor-pointer">NEK.</h1>
+                            <h1 className="text-white font-bold font-league-spartan py-3 cursor-pointer">NEK...</h1>
                         </Link>
 
                         <div>
