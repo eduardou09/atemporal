@@ -6,7 +6,7 @@ import Form from '@/components/Form/form';
 import Header from '@/components/Header/Header';
 import Hero from '@/components/Hero/Hero';
 import GridBoxes from '@/components/PartGrid/Grid';
-import Service from '@/components/Services /services';
+import Service from '@/components/Services/services';
 import { supabase } from '@/config/supabaseClient';
 import useStoreMain from '@/utils/stateSite';
 
@@ -83,14 +83,14 @@ const Home = () => {
       </div>
       <Form />
       <div className='mx-56 max-lg:mx-4 mb-16 ' >
-        <ForWho serviceRef={serviceRef} />
-        <Service />
+        {/* <ForWho serviceRef={serviceRef} />
+        <Service /> */}
         </div>
 
         <div className='mx-56 max-lg:mx-4 mb-32' >
         <GridBoxes aboutRef={aboutRef} />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

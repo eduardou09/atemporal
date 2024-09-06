@@ -7,7 +7,7 @@ import { IButton } from '@/interfaces/componets';
 const Button = ({ title, width, padding = "py-1", onClick,disabled, radius = "rounded-3xl", }: IButton) => {
   return (
  
-      <button type="button" className={`${width} ${padding} bg-primaryColor text-black px-8 rounded-3xl max-md:text-lg ${radius}`} onClick={onClick} disabled={disabled}>
+      <button type="button" className={`${width} ${padding}  text-black px-8 rounded-3xl max-md:text-lg bg-white ${radius}`} onClick={onClick} disabled={disabled}>
         {title}
       </button>
     

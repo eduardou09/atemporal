@@ -39,6 +39,7 @@ export type ITextArea={
     placeholder:string
     onChange: any;
     value:any;
+    label:any
 }
 
 export type IInput={
@@ -54,4 +55,10 @@ export type IInput={
 export type ISidebar={
     isSmall:boolean
     handleClick:any
+}
+
+export type IDropZone={
+    img: any;
+    onChange:any
+    width:any
 }

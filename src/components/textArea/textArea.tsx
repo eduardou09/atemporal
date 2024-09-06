@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 
 
 
-const TextArea = ({ placeholder, onChange, value}: ITextArea) => {
+const TextArea = ({ placeholder, onChange, value,label}: ITextArea) => {
     return (
-        <div className='flex'>
+        <div className='flex w-full flex-col'>
+            {label}
             <textarea
                 name=""
                 id=""

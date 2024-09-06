@@ -81,7 +81,7 @@ const Header = ({ handleClick, isHeader, onClickFirst, onClickSecond, second, fi
                     </Link>}
                     </div>
 
-                    {isContact && <Link href={'/contact'}>
+                    {isContact && <Link href={'/in/login'}>
                         <button type="button" className={` bg-primaryColor text-black px-8 rounded-3xl max-md:text-lg py-2 cursor-pointer`}  >
                             Contato
                         </button>
