@@ -16,6 +16,7 @@ const AddToys = () => {
         secondaryImage: null,
         tertiaryImage: null,
     });
+    const [toys, setToys] = useState([])
 
     // Função para fazer o upload da imagem
     async function uploadImage(file: File) {
@@ -110,7 +111,30 @@ const AddToys = () => {
             console.error('Erro inesperado:', error);
         }
     }
+    
+    const fecthData = async () => {
+        try {
+            const { data, error } = await supabase
+               .from('Toys') // Nome da tabela
+               .select();
 
+            if (error) {
+                console.error('Erro ao buscar dados:', error.message);
+                throw error;
+            } else {
+                console.log('Dados buscados com sucesso:', data);
+                setToys(data);
+            }
+        } catch (error) {
+            console.error('Erro inesperado:', error);
+        }
+    }
+
+    useEffect(() => {
+            fecthData();
+        }, []);
+
+    console.log({toys})
     return (
         <div className="bg-primaryColor w-full h-screen flex justify-center items-center">
             <div className=" w-3/5 flex ">
@@ -158,7 +182,27 @@ const AddToys = () => {
                         width={"w-96"}
                     />
                 </div>
-
+                <div>
+      <h1>Lista de Brinquedos</h1>
+      {toys.length === 0 ? (
+        <p>Nenhum brinquedo encontrado.</p>
+      ) : (
+        <ul>
+          {toys.map(toy => (
+            <li key={toy.id}>
+              <h2>{toy.name}</h2>
+              <p>{toy.date}</p>
+              <p>{toy.text}</p>
+              <div>
+                <img src={toy.primaryImageUrl} alt={`${toy.name} - Primary`} style={{ width: '100px', height: '100px' }} />
+                <img src={toy.secondaryImageUrl} alt={`${toy.name} - Secondary`} style={{ width: '100px', height: '100px' }} />
+                <img src={toy.tertiaryImageUrl} alt={`${toy.name} - Tertiary`} style={{ width: '100px', height: '100px' }} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
             </div>
         </div>
     );

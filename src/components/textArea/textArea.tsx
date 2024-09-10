@@ -18,7 +18,7 @@ const TextArea = ({ placeholder, onChange, value,label}: ITextArea) => {
                 onChange={onChange}
                 value={value}
                 
-                className="px-4 py-1 border border-neutral-600 rounded-xl hover:border-primaryColor bg-transparent flex-1"
+                className="px-4 py-1 border border-neutral-600 rounded-sm hover:border-primaryColor bg-transparent flex-1"
             >
             </textarea>
         </div>

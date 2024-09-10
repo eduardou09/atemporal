@@ -7,6 +7,7 @@ export type IButton ={
     onClick?: any
     radius?: string
     disabled? : boolean
+    loading?: boolean
 }
 
 export type IBox ={
@@ -39,7 +40,7 @@ export type ITextArea={
     placeholder:string
     onChange: any;
     value:any;
-    label:any
+    label?:any
 }
 
 export type IInput={
@@ -61,4 +62,9 @@ export type IDropZone={
     img: any;
     onChange:any
     width:any
+}
+
+export type IRecentsToys={
+    imgs: any;
+    
 }

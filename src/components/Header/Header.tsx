@@ -16,7 +16,7 @@ const Header = ({ handleClick, isHeader, onClickFirst, onClickSecond, second, fi
         <div>
             {isMobile? (
                 <div>
-                    <div className="flex justify-between items-center text-xl pt-4 border-b border-gray-900 px-10 w-full bg-black z-50 top-0 right-0 ">
+                    <div className="flex justify-between items-center text-xl pt-4  px-10 w-full bg-black z-50 top-0 right-0 ">
                         <Link href={'/home'}>
                             <h1 className="text-white font-bold font-league-spartan py-3 cursor-pointer">NEK...</h1>
                         </Link>
@@ -67,7 +67,7 @@ const Header = ({ handleClick, isHeader, onClickFirst, onClickSecond, second, fi
                 </div>
             ) : (
 
-                <div className="flex justify-between items-center text-xl pt-4 border-b border-gray-900 py-3 px-56">
+                <div className="flex justify-between items-center text-xl pt-4  py-3 px-56">
                     <Link href={'/home'}>
                         <h1 className="text-white font-bold font-league-spartan py-3 cursor-pointer">NEK.</h1>
                     </Link>
@@ -82,8 +82,8 @@ const Header = ({ handleClick, isHeader, onClickFirst, onClickSecond, second, fi
                     </div>
 
                     {isContact && <Link href={'/in/login'}>
-                        <button type="button" className={` bg-primaryColor text-black px-8 rounded-3xl max-md:text-lg py-2 cursor-pointer`}  >
-                            Contato
+                        <button type="button" className={` bg-white text-black px-8 rounded-3xl text-base py-2 cursor-pointer`}  >
+                            Entrar
                         </button>
                     </Link>}
                 </div>

@@ -1,12 +1,16 @@
 "use client";
 
-import Footer from '@/components/Footer/footer';
+
 import ForWho from '@/components/ForWho/ForWho';
 import Form from '@/components/Form/form';
 import Header from '@/components/Header/Header';
 import Hero from '@/components/Hero/Hero';
+import OldToys from '@/components/OldToys/OldToys';
+import OurToys from '@/components/OurToys/OurToys';
 import GridBoxes from '@/components/PartGrid/Grid';
-import Service from '@/components/Services/services';
+import RecentsToys from '@/components/RecentsToys/recenteToys';
+import View from '@/components/View/view';
+
 import { supabase } from '@/config/supabaseClient';
 import useStoreMain from '@/utils/stateSite';
 
@@ -20,23 +24,39 @@ declare global {
 
 const Home = () => {
   // Inicializa o estado com um objeto vazio
-  const [forms, setForms] = useState<any>({});
+  const [toys, setToys] = useState<any>({});
+  const [view, setView] = useState<any>([]);
   const { isHeader, setIsHeader, form } = useStoreMain();
 
   useEffect(() => {
     loadForm();
   }, []);
 
+
+  useEffect(() => {
+    loadView();
+  }, []);
   const loadForm = async () => {
     const { data, error } = await supabase
-      .from('form')
+      .from('Toys')
       .select();
     console.log(data);
     if (error) {
       console.error(error);
       return;
     }
-    setForms(data);
+    setToys(data);
+  };
+  const loadView = async () => {
+    const { data, error } = await supabase
+      .from('View')
+      .select();
+    console.log(data);
+    if (error) {
+      console.error(error);
+      return;
+    }
+    setView(data);
   };
 
   const serviceRef = useRef<HTMLDivElement | null>(null);
@@ -63,32 +83,45 @@ const Home = () => {
   };
 
 
-
+console.log({toys}, {view})
 
   return (
-    <div className='bg-black'>
+    <div className='bg-primaryColor'>
       <Header
         onClickSecond={handleScrollAbout}
         onClickFirst={handleScrollService}
         onClickPC={handleScrollServiceButton}
-        first="Serviços"
+        first="Brinquedos"
         second="Sobre nós"
         serviceRef={serviceRef}
         isHeader={isHeader}
         handleClick={handleClick}
         isContact={true}
       />
-      <div className='mx-56 max-lg:mx-4 mb-20' >
+      <div className='ml-56 max-lg:mx-4 mb-20' >
         <Hero handleScrollServiceButton={handleScrollServiceButton} />
       </div>
-      <Form />
-      <div className='mx-56 max-lg:mx-4 mb-16 ' >
-        {/* <ForWho serviceRef={serviceRef} />
-        <Service /> */}
+      
+      <div className='bg-white py-16'>
+        <div className='mx-56 max-lg:mx-4  bg-white'>
+        <ForWho serviceRef={serviceRef} toys={toys} />
         </div>
+      </div>
+      <div className='max-lg:mx-4  bg-[#333333]' >
+        <div className='mx-56 max-lg:mx-4  '>
 
-        <div className='mx-56 max-lg:mx-4 mb-32' >
-        <GridBoxes aboutRef={aboutRef} />
+        </div>
+       <RecentsToys imgs={toys}/>
+       <OurToys  imgs={toys}/>
+      </div>
+      <div className='bg-white py-16'>
+        <OldToys imgs={toys}/>
+        <View imgs={view} />
+      </div>
+
+        <div className=' max-lg:mx-4 mb-32' >
+      
+        <Form />
       </div>
       {/* <Footer /> */}
     </div>

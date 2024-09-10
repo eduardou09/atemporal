@@ -9,8 +9,8 @@ import Head from "next/head";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nek - Marketing digital para aumentar suas vendas!",
-  description: "Nek | Marketing digital - Aumente suas vendas no digital, Desenvolvimento de software, Marketing Digital, Manunteção de sistemas, Gestão de Tráfego",
+  title: "Atemporal",
+  description: "Atemporal - Maior museu dde brinquedos | museu com mais de 100000 brinquedos ",
   icons: {
     icon: '/icon.ico', // /public path
   },
@@ -27,7 +27,7 @@ export default function RootLayout({
       
       </head>
       <body className={montserrat.className}>
-       
+{/*        
           <Script
             id="facebook-pixel"
             strategy="afterInteractive"
@@ -45,7 +45,7 @@ export default function RootLayout({
                 fbq('track', 'PageView');
               `,
             }}
-          />
+          /> */}
        
         <noscript>
          

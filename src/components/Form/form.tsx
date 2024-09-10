@@ -22,10 +22,12 @@ const Form = () => {
         email: "",
         number: "",
         about: "",
+        country: ""
     })
     
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
     const { isHeader, setIsHeader, form } = useStoreMain();
+    const [loading, setLoading] = useState(false);
     const handleChange = (field: any, value: string) => {
         setValue((prevState: any) => ({
             ...prevState,
@@ -43,6 +45,7 @@ const Form = () => {
 
 
     const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
+        
         e.preventDefault(); // Prevent the default form submission
 
         if (!value.name || !value.email || !value.number || !value.about) {
@@ -55,18 +58,21 @@ const Form = () => {
                 name: '',
                 email: '',
                 number: '',
-              
+                about: '',
+                country: ''
             });
 
             alertSuccess('Sucesso ao enviar o formulário, em instantes receberá o retorno.');
         } 
+      
     }
 
     const SaveForm = async (values: any) => {
+        setLoading(true);
         if (values) {
             try {
                 const { data, error } = await supabase
-                    .from('formMain')
+                    .from('View')
                     .insert([values]); // Insere os valores diretamente
     
                 if (error) {
@@ -81,6 +87,7 @@ const Form = () => {
                 return null; // Trate o erro de forma adequada
             }
         }
+        setLoading(false);
     };
 
 
@@ -106,18 +113,18 @@ const Form = () => {
     
     })
 
-    console.log(value)
+    console.log({loading})
 
     return (
 
-        <div className=" bg-secondaryColor  py-14  " >
+        <div className=" bg-[#333333] py-14  " >
             <Toaster
                 position="top-center"
                 reverseOrder={false}
             />
          
             <div className="   flex items-center flex-col max-lg:flex-col" >
-                <div className=" flex bg-secondaryColor max-lg:flex-col p-3 justify-between gap-10 max-lg:px-24 max-md:px-3"  >
+                <div className=" flex  max-lg:flex-col p-3 justify-between gap-10 max-lg:px-24 max-md:px-3"  >
                     <div className="flex items-start justify-center flex-col  gap-3 px-3">
                         <h2 className="text-3xl text-white font-semibold max-md:text-3xl ">
                         Faça sua empresa crescer em menos de 30 segundos.
@@ -129,7 +136,7 @@ const Form = () => {
                         
                     </div>
                     
-                        <div className=" bg-neutral-800 rounded-3xl w-3/4 max-md:w-full   border border-neutral-600" data-aos="fade-up ">
+                        <div className=" rounded-3xl w-3/4 max-md:w-full   " data-aos="fade-up ">
                             <div  className="flex flex-wrap gap-2 p-5 flex-col" >
                               
                                
@@ -155,19 +162,29 @@ const Form = () => {
                                         value={value.email || ""}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange("email", e.target.value)}
                                     />
+                                         <Input
+                                         type="text"
+                                        label={'seu país'}
+                                        placeholder="onde você mora?"
+                                        value={value.country || ""}
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange("country", e.target.value)}
+                                    />
                                      <div className="flex flex-col gap-2 mt-1 text-white">
-                                    Conte-nos mais sobre sua empresa
+                                  
                                     <TextArea
+                                        label={'O que achou dos brinquedos'}
                                         placeholder="Conte-nos mais sobre sua nescessidade"
                                         value={value.about || ""}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange("about", e.target.value)}
                                     />
+                                  
                                 </div>
 
                                     <Button
+                                        loading={loading}
                                         title="Enviar"
-                                        padding="py-3"
-                                        radius="rounded-xl "
+                                        padding="py-3 bg-primaryColor text-white "
+                                        radius="rounded-sm  bg-primaryColor"
                                         onClick={handleSave}
                                         disabled={isButtonEnabled}
                                     />
